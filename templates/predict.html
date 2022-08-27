@@ -1,0 +1,114 @@
+{% extends 'header.html' %}
+
+{% block head %}
+
+
+<title>Strength Estimator</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+
+
+        <form action="/predict" method="post">
+            <legend>Strength Estimation Form</legend>
+            <div class="mb-3">
+                <label class="form-label">Cement</label>
+                <input class="form-control" type="text" name="cement" placeholder="(in kilograms per cubic meters)"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Blast Furnace Slag</label>
+                <input class="form-control" type="text" name="blast_furnace_slag" placeholder="(in kilograms per cubic meters)"
+                    required />
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fly Ash</label>
+                <input class="form-control" type="text" name="fly_ash"
+                    placeholder="(in kilograms per cubic meters)" />
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Water</label>
+                <input class="form-control" type="text" name="water" placeholder="(in kilograms per cubic meters)"
+                    required />
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Superplasticizer</label>
+                <input class="form-control" type="text" name="superplasticizer"
+                    placeholder="(in kilograms per cubic meters)" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Coarse Aggregate</label>
+                <input class="form-control" type="text" name="coarse_aggregate" placeholder="(in kilograms per cubic meters)"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fine Aggregate</label>
+                <input class="form-control" type="text" name="fine_aggregate" placeholder="(in kilograms per cubic meters)"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input class="form-control" type="text" name="age"
+                    placeholder="(in days)" required />
+            </div>
+            <div class="mb-3">
+
+                <input class="btn btn-primary" type="submit" value="Predict Concrete Compressive Strength" required />
+            </div>
+
+        </form>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+              Concrete Compressive Strength
+            </div>
+            <div class="card-body">
+        {% if context['concrete_data'] is not none %}
+        <table class="table table-striped">
+            <caption>Concrete Strength Prediction </caption>
+            <tr>
+                <th>Input Feature</th>
+                <th>Feature Value</th>
+
+            </tr>
+            {% for column,value in context['concrete_data'].items() %}
+
+
+
+            <tr>
+                <td>{{column}}</td>
+                <td>{{value[0]}}</td>
+            </tr>
+
+            {% endfor %}
+            <tr>
+
+                <td>concrete_compressive_strength (in MPa)</td>
+                <td>
+                    {{ context['concrete_compressive_strength'] }}
+                </td>
+            </tr>
+        </table>
+
+        {% else %}
+       
+              <h5 class="card-title">Submit Form</h5>
+              <p class="card-text">Kindly provide necessary information to estimate concrete compressive strength</p>
+            
+         
+
+        {% endif %}
+        Go to <a href="/" class="btn btn-primary">Home</a>
+    </div>
+</div>
+    </div>
+
+    {% endblock %}

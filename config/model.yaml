@@ -1,0 +1,58 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 4
+    verbose: 2
+
+model_selection:
+  module_0:
+    class: Ridge
+    module: sklearn.linear_model
+     
+    search_param_grid:
+      fit_intercept:
+        - True
+        - False
+      alpha:
+        - 0.00000001
+        - 0.0001
+        - 0.01
+        - 1
+        - 5
+        - 10
+        - 20
+        - 40
+        - 80
+
+  module_1:
+    class: RandomForestRegressor
+    module: sklearn.ensemble
+
+    search_param_grid:
+      criterion:
+        - squared_error
+        - absolute_error
+        - poisson
+
+      max_depth:
+        - 3
+        - 5
+        - 7
+        - 10
+        - 15
+        - 25
+                                     
+  module_2:
+    class: GradientBoostingRegressor
+    module: sklearn.ensemble
+
+    search_param_grid:
+      loss:
+        - squared_error
+        - absolute_error
+        - huber
+        - quantile
+      criterion:
+        - friedman_mse
+        - squared_error

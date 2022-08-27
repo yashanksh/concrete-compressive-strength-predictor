@@ -1,0 +1,44 @@
+columns:
+  cement: float64
+  blast_furnace_slag: float64
+  fly_ash: float64
+  water: float64
+  superplasticizer: float64
+  coarse_aggregate: float64
+  fine_aggregate: float64
+  age: int64
+  concrete_compressive_strength: float64
+  
+
+numerical_columns:
+  - cement
+  - blast_furnace_slag
+  - fly_ash
+  - water
+  - superplasticizer
+  - coarse_aggregate
+  - fine_aggregate
+  
+
+categorical_columns:
+  - age
+
+target_column:
+  - concrete_compressive_strength
+
+domain_value:
+  age:
+    - 28
+    - 270
+    - 365
+    - 360
+    - 90
+    - 180
+    - 3
+    - 7
+    - 56
+    - 91
+    - 14
+    - 100
+    - 120
+    - 1
