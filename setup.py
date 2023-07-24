@@ -16,7 +16,7 @@ def get_requirements_list()->List[str]:
 setup(
     name = 'concrete-strength-estimator',
     version='0.0.2',
-    author='Abhinesh Kourav',
+    author='Yashank Sharma',
     description='Estimate concrete compressive strength without waiting for 28 days like in conventional UCS test.',
     packages=find_packages(),
     install_requires = get_requirements_list()
